@@ -1,0 +1,12 @@
+### Hello World
+
+GET http://localhost:7777/
+
+### Polls
+
+POST http://localhost:7777/polls
+Content-Type: application/json
+
+{
+  "title": "testando a enquete 2"
+}

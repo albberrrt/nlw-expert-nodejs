@@ -8,5 +8,6 @@ POST http://localhost:7777/polls
 Content-Type: application/json
 
 {
-  "title": "testando a enquete 2"
+  "title": "testando a enquete 2",
+  "options": ["ReactJS", "NodeJS", "Vite"]
 }

@@ -1,10 +1,7 @@
-import fastify from "fastify"
-import { PrismaClient } from "@prisma/client"
+import { app } from "./app"
+import { prisma } from "../prisma/client"
 import { z } from "zod"
-
-const app = fastify()
-
-const prisma = new PrismaClient()
+import { env } from "../../config/env"
 
 app.get('/', () => {
   return "Hello World!"
@@ -25,9 +22,6 @@ app.post('/polls', async (request, reply) => {
   return reply.status(201).send({ pollId: poll.id })
 })
 
-const HOST = process.env.SERVER_HOST
-const PORT = Number(process.env.SERVER_PORT)
-
-app.listen({ host: HOST, port: PORT }).then(() => {
-  console.log(`Server started! - ${HOST}:${PORT}  || http://${HOST}:${PORT}/`)
+app.listen({ host: env.SERVER_HOST, port: env.SERVER_PORT }).then(() => {
+  console.log(`Server started! - ${env.SERVER_HOST}:${env.SERVER_PORT}  || http://${env.SERVER_HOST}:${env.SERVER_PORT}/`)
 })

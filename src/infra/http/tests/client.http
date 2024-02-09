@@ -2,12 +2,20 @@
 
 GET http://localhost:7777/
 
-### Polls
+### CREATE Polls
 
-POST http://localhost:7777/polls
+POST http://localhost:7777/poll
 Content-Type: application/json
 
 {
-  "title": "testando a enquete 2",
+  "title": "testando a enquete 3",
   "options": ["ReactJS", "NodeJS", "Vite"]
 }
+
+### GET Polls
+
+GET http://localhost:7777/poll/clsepw69100001vbo283dgslv
+
+### GET Polls
+
+GET http://localhost:7777/allpolls

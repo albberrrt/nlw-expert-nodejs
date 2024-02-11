@@ -1,10 +1,12 @@
+import { httpReply } from '@/core/infra/adapter/HttpReplyAdapter';
 import { FastifyInstance } from "fastify"
-import { prisma } from "../../prisma/client"
+import { prisma } from "@/infra/prisma/client"
+import { ok } from "@/core/infra/HttpResponse"
 
 export async function getAllPolls(app: FastifyInstance) {
   app.get('/allpolls', async (request, reply) => {
 
-    const poll = await prisma.poll.findMany({
+    const polls = await prisma.poll.findMany({
       include: {
         options: {
           select: {
@@ -15,6 +17,6 @@ export async function getAllPolls(app: FastifyInstance) {
       }
     })
 
-    return reply.status(200).send({ pollId: poll })
+    return httpReply(ok({ polls: polls }), reply)
   })
 }

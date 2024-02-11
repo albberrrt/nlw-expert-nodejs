@@ -8,14 +8,24 @@ POST http://localhost:7777/poll
 Content-Type: application/json
 
 {
-  "title": "testando a enquete 3",
-  "options": ["ReactJS", "NodeJS", "Vite"]
+  "title": "Melhores ferramentas Javascript",
+  "options": ["ReactJS", "NodeJS", "Vite", "Heroku", "Fastify"]
 }
 
-### GET Polls
+### GET Poll
 
-GET http://localhost:7777/poll/clsepw69100001vbo283dgslv
+GET http://localhost:7777/poll/clsgunfxe0000rk52fmxgshea
 
-### GET Polls
+### GET All Polls
 
 GET http://localhost:7777/allpolls
+
+### POST Vote on Poll
+
+POST http://localhost:7777/poll/clsgunfxe0000rk52fmxgshea/votes
+Content-Type: application/json
+
+{
+  "pollOptionId": "clsgunfxi0003rk521g7wo6lf"
+}
+

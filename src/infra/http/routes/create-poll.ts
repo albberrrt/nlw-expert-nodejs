@@ -1,9 +1,11 @@
+import { httpReply } from '@/core/infra/adapter/HttpReplyAdapter';
 import z from "zod"
-import { prisma } from "../../prisma/client"
+import { prisma } from "@/infra/prisma/client"
 import { FastifyInstance } from "fastify"
+import { created } from "@/core/infra/HttpResponse"
 
 export async function createPoll(app: FastifyInstance) {
-  app.post('/polls', async (request, reply) => {
+  app.post('/poll', async (request, reply) => {
     const createPollBody = z.object({
       title: z.string(),
       options: z.array(z.string())
@@ -25,6 +27,6 @@ export async function createPoll(app: FastifyInstance) {
       }
     })
 
-    return reply.status(201).send({ pollId: poll.id })
+    return httpReply(created({ pollId: poll.id }), reply)
   })
 }
